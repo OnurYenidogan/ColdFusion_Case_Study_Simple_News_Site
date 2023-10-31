@@ -1,21 +1,27 @@
-<!DOCTYPE html>
-<html lang="tr">
+<!-- index.cfm -->
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Ana Sayfa</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
+    <div class="container">
+        <cfquery name="getNews" datasource="NewsSiteDS">
+            SELECT n.newsID, n.title, c.categoryName
+            FROM News n
+            JOIN Categories c ON n.categoryID = c.categoryID
+            ORDER BY n.newsID DESC
+        </cfquery>
 
-<cfquery name="getNews" datasource="NewsSiteDS">
-    SELECT * FROM Haberler
-</cfquery>
-
-<cfoutput query="getNews">
-    <div>
-        <h2><a href="detail.cfm?newsID=#newsID#">#baslik#</a></h2>
-        <p>#icerik#</p>
+        <cfoutput query="getNews">
+            <div class="news-item">
+                <div class="news-title">
+                    <a href="detail.cfm?newsID=#newsID#">#title#</a>
+                </div>
+                <div class="news-category">
+                    Category: #categoryName#
+                </div>
+            </div>
+        </cfoutput>
     </div>
-</cfoutput>
-
 </body>
 </html>
