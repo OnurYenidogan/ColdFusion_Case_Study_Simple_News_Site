@@ -39,11 +39,7 @@
                     #content#
                 </div>
             </div>
-            <button onclick="location.href='updateNews.cfm?newsID=#URL.newsID#'">Güncelle</button>
-            <form action="" method="post" onsubmit="return confirm('Haberi silmek istediğinizden emin misiniz?');">
-                <input type="hidden" name="newsID" value="#URL.newsID#">
-                <input type="submit" name="delete" value="Sil">
-            </form>
+            <button onclick="location.href='updateNews.cfm?newsID=#URL.newsID#'">Güncelle / Sil</button>
         </cfoutput>
     </div>
     <cfif IsDefined("form.delete")>
