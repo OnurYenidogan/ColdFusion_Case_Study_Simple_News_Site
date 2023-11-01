@@ -23,6 +23,7 @@
                             </cfloop>
                         </ul>
                         <p>Reactions: #post.reactions#</p>
+                        <p>User ID: #post.userId#</p>
                     </div>
                 </div>
             </cfloop>
