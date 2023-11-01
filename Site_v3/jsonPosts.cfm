@@ -9,6 +9,28 @@
         <cfhttp url="https://dummyjson.com/posts" method="get" result="response"></cfhttp>
         <cfset posts = DeserializeJSON(response.FileContent)>
         
+        <!--- Benzersiz tag'leri saklamak için bir yapı oluşturun --->
+        <cfset uniqueTags = {}>
+
+        <!--- Tüm post'ları döngüye alın ve her bir tag'i kontrol edin --->
+        <cfloop array="#posts.posts#" index="post">
+            <cfloop array="#post.tags#" index="tag">
+                <!--- Eğer tag daha önce görülmemişse, yapıya ekleyin --->
+                <cfif NOT structKeyExists(uniqueTags, tag)>
+                    <cfset uniqueTags[tag] = true>
+                </cfif>
+            </cfloop>
+        </cfloop>
+
+        <!--- Benzersiz tag'leri yazdırın --->
+        <cfoutput>
+            <ul>
+                <cfloop collection="#uniqueTags#" item="tag">
+                    <li>#tag#</li>
+                </cfloop>
+            </ul>
+        </cfoutput>
+        
         <cfoutput>
             <cfloop array="#posts.posts#" index="post">
                 <div class="news-item">

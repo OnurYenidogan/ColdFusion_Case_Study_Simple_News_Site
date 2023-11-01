@@ -1,0 +1,11 @@
+ALTER TABLE News
+ADD 
+    createdDate DATETIME NOT NULL DEFAULT '2023-10-31T12:00:00',
+    updatedDate DATETIME NOT NULL DEFAULT '2023-10-31T12:00:00';
+GO
+
+UPDATE News
+SET 
+    createdDate = '2023-10-31T12:00:00',
+    updatedDate = '2023-10-31T12:00:00';
+GO
