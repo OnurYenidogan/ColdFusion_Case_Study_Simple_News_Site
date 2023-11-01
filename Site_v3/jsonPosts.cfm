@@ -24,8 +24,12 @@
 <body>
 <cfinclude template="navigation.cfm">
     <div class="container">
+        <cfset fileContent = FileRead(expandPath("./posts.json"))>
+        <cfset posts = DeserializeJSON(fileContent)>
+        <!--- İnternetten JSON verisini çekek için
         <cfhttp url="https://dummyjson.com/posts" method="get" result="response"></cfhttp>
         <cfset posts = DeserializeJSON(response.FileContent)>
+        --->
 
         <!--- Benzersiz tag'leri saklamak için bir yapı oluşturun --->
         <cfset uniqueTags = {}>
