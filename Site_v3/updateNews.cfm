@@ -31,7 +31,7 @@
             <cflocation url="detail.cfm?newsID=#form.newsID#" addtoken="no">
         </cfif>
         
-<cfquery name="getNewsDetail" datasource="NewsSiteDS">
+        <cfquery name="getNewsDetail" datasource="NewsSiteDS">
             SELECT n.title, n.content, n.categoryID, c.categoryName
             FROM News n
             JOIN Categories c ON n.categoryID = c.categoryID
@@ -55,8 +55,10 @@
                         <option value="#categoryID#">#categoryName#</option>
                     </cfloop>
                 </select><br>
-                                <input type="submit" value="Güncelle" class="submit-btn">
-                <button type="button" onclick="location.href='deleteNews.cfm?newsID=#URL.newsID#'" class="delete-btn">Sil</button>
+                <div>
+                    <input type="submit" value="Güncelle" class="update-btn">
+                    <button type="button" onclick="location.href='deleteNews.cfm?newsID=#URL.newsID#'" class="delete-btn">Sil</button>
+                </div>
             </form>
             <cfif IsDefined("form.title")>
                 <div class="success-message">
@@ -67,11 +69,12 @@
     </div>
     <style>
         .success-message {
+            font-size: 2em; /* Font boyutunu büyüt */
             color: green;
             font-weight: bold;
             margin-bottom: 10px;
         }
-        .input-field, .textarea-field, .submit-btn {
+        .input-field, .textarea-field, .update-btn, .delete-btn {
             width: 80%;  /* Adjust as needed */
             padding: 10px;
             font-size: 1.2em; /* Adjust as needed */
@@ -98,13 +101,15 @@
             border: none;
             cursor: pointer;
         }
-        .success-message {
-            font-size: 2em; /* Font boyutunu büyüt */
-            color: green;
-            font-weight: bold;
-            margin-bottom: 10px;
+        .update-btn {
+            background-color: #007bff; /* Mavi renk */
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px; /* Sil butonundan sağa doğru boşluk bırakır */
         }
-        </style>
     </style>
 </body>
 </html>
