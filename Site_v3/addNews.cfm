@@ -15,7 +15,7 @@
                     <cfqueryparam value="#form.categoryID#" cfsqltype="CF_SQL_INTEGER">
                 )
             </cfquery>
-            <div class="success-message">Haber eklendi!</div>
+            
         </cfif>
 
         <cfquery name="getCategories" datasource="NewsSiteDS">
@@ -33,14 +33,17 @@
             </select><br>
             <input type="submit" value="Haber Ekle" class="submit-btn">
         </form>
+        <div class="success-message">Haber eklendi!</div>
     </div>
 
     <style>
         .success-message {
-            color: green;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
+        color: green;
+        font-weight: bold;
+        margin-bottom: 10px;
+        font-size: 30pt; /* Yazı boyutunu 30 pt olarak ayarlayın */
+        text-align: center; /* Yazıyı tam ortala */
+    }
         .input-field, .textarea-field, .submit-btn {
             width: 80%;  /* Adjust as needed */
             padding: 10px;
