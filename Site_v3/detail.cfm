@@ -39,6 +39,7 @@
                     #content#
                 </div>
             </div>
+            <button onclick="location.href='updateNews.cfm?newsID=#URL.newsID#'">Güncelle</button>
         </cfoutput>
     </div>
 </body>
