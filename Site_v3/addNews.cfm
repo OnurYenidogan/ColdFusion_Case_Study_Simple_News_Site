@@ -33,7 +33,9 @@
             </select><br>
             <input type="submit" value="Haber Ekle" class="submit-btn">
         </form>
-        <div class="success-message">Haber eklendi!</div>
+        <cfif structKeyExists(form, "submitted")>
+            <div class="success-message">Haber eklendi!</div>
+        </cfif>
     </div>
 
     <style>

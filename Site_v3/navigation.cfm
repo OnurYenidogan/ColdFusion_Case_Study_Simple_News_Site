@@ -1,3 +1,8 @@
+<div class="header">
+    <h1>Onur Yenido&#287;an Study Case</h1>
+
+</div>
+
 <div class="navigation">
     <div class="top-nav">
         <button onclick="location.href='addCategory.cfm'">Kategori Ekle</button>
