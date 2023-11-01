@@ -1,0 +1,41 @@
+<!-- deleteNews.cfm -->
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script type="text/javascript">
+        var timeleft = 5;
+        var downloadTimer = setInterval(function(){
+          if(timeleft <= 0){
+            clearInterval(downloadTimer);
+          }
+          document.getElementById("countdown").innerHTML = timeleft + " saniye sonra anasayfaya yönlendiriliyorsunuz";
+          timeleft -= 1;
+        }, 1000);
+    </script>
+</head>
+<body>
+    <div class="container">
+        <cfquery datasource="NewsSiteDS">
+            DELETE FROM News WHERE newsID = <cfqueryparam value="#URL.newsID#" cfsqltype="CF_SQL_INTEGER">
+        </cfquery>
+        <div class="message">
+            Haber Silindi
+        </div>
+        <div id="countdown"></div>
+    </div>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .message {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+    </style>
+    <meta http-equiv="refresh" content="5;url=index.cfm" />
+</body>
+</html>

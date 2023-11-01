@@ -55,10 +55,15 @@
                         <option value="#categoryID#">#categoryName#</option>
                     </cfloop>
                 </select><br>
-                <input type="submit" value="Güncelle" class="submit-btn">
+                                <input type="submit" value="Güncelle" class="submit-btn">
+                <button type="button" onclick="location.href='deleteNews.cfm?newsID=#URL.newsID#'" class="delete-btn">Sil</button>
             </form>
+            <cfif IsDefined("form.title")>
+                <div class="success-message">
+                    Haber başarıyla güncellendi!
+                </div>
+            </cfif>
         </cfoutput>
-
     </div>
     <style>
         .success-message {
@@ -81,10 +86,25 @@
             align-items: center;
         }
         .form-label {
-        font-size: 1.5em;  /* Adjust as needed */
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
+            font-size: 1.5em;  /* Adjust as needed */
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .delete-btn {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border: none;
+            cursor: pointer;
+        }
+        .success-message {
+            font-size: 2em; /* Font boyutunu büyüt */
+            color: green;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        </style>
     </style>
 </body>
 </html>
