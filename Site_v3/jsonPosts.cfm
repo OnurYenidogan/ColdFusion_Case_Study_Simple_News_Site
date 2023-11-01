@@ -18,7 +18,19 @@
         .filter-button {
             display: block;
             margin: 10px auto 0 auto;
+            background-color: #28a745;  /* Yeşil arka plan rengi */
+            color: #ffffff;  /* Beyaz yazı rengi */
+            padding: 10px 20px;  /* Daha büyük padding */
+            font-size: 16px;  /* Daha büyük font boyutu */
+            border: none;  /* Kenarlık kaldırıldı */
+            cursor: pointer;  /* İmleç, düğme üzerine gelindiğinde el simgesi olur */
+            border-radius: 5px;  /* Köşeleri yuvarlak yapar */
         }
+        .sort-section select {
+            font-size: 16px; /* veya istediğiniz başka bir değer */
+        }
+
+
     </style>
 </head>
 <body>
@@ -42,6 +54,7 @@
             <form action="jsonPosts.cfm" method="post">
                 <div class="filter-tags">
                     <cfoutput>
+                    <label for="sortField">Etiketler:</label>
                         <cfloop collection="#uniqueTags#" item="tag">
                             <cfset isChecked = StructKeyExists(FORM, "tags") AND ArrayFind(ListToArray(FORM.tags), tag)>
                             <label><input type="checkbox" name="tags" value="#tag#" <cfif isChecked>checked</cfif>> #tag#</label>
@@ -49,7 +62,7 @@
                     </cfoutput>
                 </div>
                 <div class="sort-section">
-                    <label for="sortField">Sırala:</label>
+                    <label for="sortField">S&inodot;rala:</label>
                     <select name="sortField" id="sortField">
                         <option value="id">Post ID</option>
                         <option value="userId">User ID</option>
@@ -59,7 +72,7 @@
                         <option value="desc">Azalan</option>
                     </select>
                 </div>
-                <input type="submit" value="Filtrele" class="filter-button">
+                <input type="submit" value="Filtrele / Sırala" class="filter-button">
             </form>
         </div>
 
