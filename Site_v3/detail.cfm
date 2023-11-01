@@ -19,13 +19,13 @@
                     #title#
                 </div>
                 <div class="news-category">
-                    Category: #categoryName#
+                    Kategori: #categoryName#
                 </div>
                 <div class="news-content">
                     #content#
                 </div>
             </div>
-            <button onclick="location.href='updateNews.cfm?newsID=#URL.newsID#'">Güncelle / Sil</button>
+            <button onclick="location.href='updateNews.cfm?newsID=#URL.newsID#'">G&uuml;ncelle / Sil</button>
         </cfoutput>
     </div>
     <cfif IsDefined("form.delete")>
@@ -35,6 +35,44 @@
     </cfquery>
     <cflocation url="index.cfm" addtoken="no">
 </cfif>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+    }
+    .container {
+        background-color: #fff;
+        margin: auto;
+        padding: 20px;
+        width: 80%;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .news-detail {
+        margin-bottom: 20px;
+    }
+    .news-title {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    .news-category {
+        font-size: 18px;
+        margin-bottom: 20px;
+        color: #777;
+    }
+    .news-content {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+    button {
+        background-color: #008CBA;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
 
 </body>
 </html>

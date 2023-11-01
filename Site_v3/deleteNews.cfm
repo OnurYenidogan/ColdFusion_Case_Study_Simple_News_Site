@@ -8,7 +8,7 @@
           if(timeleft <= 0){
             clearInterval(downloadTimer);
           }
-          document.getElementById("countdown").innerHTML = timeleft + " saniye sonra anasayfaya yönlendiriliyorsunuz";
+          document.getElementById("countdown").innerHTML = timeleft + " saniye sonra anasayfaya y&ouml;nlendiriliyorsunuz";
           timeleft -= 1;
         }, 1000);
     </script>

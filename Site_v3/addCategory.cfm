@@ -48,6 +48,14 @@
         font-weight: bold;
         margin-bottom: 5px;
     }
+        .submit-btn {
+        padding: 10px;
+        font-size: 1.2em;
+        margin-bottom: 10px;
+        width: auto;
+        background-color: #008CBA;
+        color: white;
+    }
 </style>
 </body>
 </html>

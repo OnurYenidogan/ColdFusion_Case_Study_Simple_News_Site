@@ -65,6 +65,14 @@
         font-weight: bold;
         margin-bottom: 5px;
     }
+        .submit-btn {
+        padding: 10px;
+        font-size: 1.2em;
+        margin-bottom: 10px;
+        width: auto;  /* Genişliği otomatik olarak ayarla */
+        background-color: #008CBA;  /* Buton rengini mavi yap */
+        color: white;  /* Yazı rengini beyaz yap */
+    }
     </style>
 </body>
 </html>
