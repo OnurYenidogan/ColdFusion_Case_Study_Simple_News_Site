@@ -38,9 +38,10 @@
                 <div class="form-label">Kategori</div> 
                 <select name="categoryID" required class="input-field">
                     <cfloop query="getCategories">
-                        <option value="#categoryID#">#categoryName#</option>
+                        <option value="#categoryID#" <cfif categoryID EQ getNewsDetail.categoryID>selected</cfif>>#categoryName#</option>
                     </cfloop>
                 </select><br>
+
                 <div>
                     <input type="submit" value="Güncelle" class="update-btn">
                     <button type="button" onclick="location.href='deleteNews.cfm?newsID=#URL.newsID#'" class="delete-btn">Sil</button>

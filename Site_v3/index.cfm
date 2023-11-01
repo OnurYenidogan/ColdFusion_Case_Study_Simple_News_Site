@@ -19,7 +19,7 @@
                     <a href="detail.cfm?newsID=#newsID#">#title#</a>
                 </div>
                 <div class="news-category">
-                    Category: #categoryName#
+                    Kategori: #categoryName#
                 </div>
             </div>
         </cfoutput>
