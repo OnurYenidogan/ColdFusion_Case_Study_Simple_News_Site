@@ -6,6 +6,7 @@
 <body>
 <cfinclude template="navigation.cfm">
 <div class="container">
+    <h2 style="text-align:center;">Kategori Ekle</h2>
     <cfif structKeyExists(form, "submitted")>
         <cfquery datasource="NewsSiteDS">
             INSERT INTO Categories (categoryName)
@@ -18,9 +19,25 @@
 
     <form action="addCategory.cfm" method="post" class="news-form">
         <input type="hidden" name="submitted" value="true">
-        <div class="form-label">Kategori Ad&#305</div> 
         <input type="text" name="categoryName" required class="input-field"><br>
         <input type="submit" value="Kategori Ekle" class="submit-btn">
+    </form>
+</div>
+
+<hr style="width: 80%; margin: 20px 10%;">
+
+<div class="container">
+    <h2 style="text-align:center;">Kategori Sil</h2>
+    <form action="deleteCategory.cfm" method="post" class="news-form">
+        <select name="categoryID" required class="input-field">
+            <cfquery name="getCategories" datasource="NewsSiteDS">
+                SELECT categoryID, categoryName FROM Categories
+            </cfquery>
+            <cfoutput query="getCategories">
+                <option value="#categoryID#">#categoryName#</option>
+            </cfoutput>
+        </select><br>
+       <input type="submit" value="Kategori Sil" class="submit-btn" style="background-color:red;">
     </form>
 </div>
 
