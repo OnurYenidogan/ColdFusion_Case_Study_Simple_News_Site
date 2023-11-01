@@ -1,7 +1,25 @@
 <!-- jsonPosts.cfm -->
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        .filter-section {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .filter-tags label {
+            margin-right: 10px;
+        }
+        .filter-button {
+            display: block;
+            margin: 10px auto 0 auto;
+        }
+    </style>
 </head>
 <body>
 <cfinclude template="navigation.cfm">
@@ -22,14 +40,19 @@
         </cfloop>
 
         <!--- Filtreleme formunu oluşturun --->
-        <form action="jsonPosts.cfm" method="post">
-            <cfoutput>
-                <cfloop collection="#uniqueTags#" item="tag">
-                    <input type="checkbox" name="tags" value="#tag#"> #tag#<br>
-                </cfloop>
-            </cfoutput>
-            <input type="submit" value="Filtrele">
-        </form>
+        <div class="filter-section">
+            <form action="jsonPosts.cfm" method="post">
+                <div class="filter-tags">
+                    <cfoutput>
+                        <cfloop collection="#uniqueTags#" item="tag">
+                            <cfset isChecked = StructKeyExists(FORM, "tags") AND ArrayFind(ListToArray(FORM.tags), tag)>
+                            <label><input type="checkbox" name="tags" value="#tag#" <cfif isChecked>checked</cfif>> #tag#</label>
+                        </cfloop>
+                    </cfoutput>
+                </div>
+                <input type="submit" value="Filtrele" class="filter-button">
+            </form>
+        </div>
 
         <!--- Form gönderildiyse, tags dizisini elde edin --->
         <cfif structKeyExists(FORM, "tags")>
