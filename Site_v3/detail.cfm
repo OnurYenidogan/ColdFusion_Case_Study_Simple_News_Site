@@ -22,7 +22,9 @@
                     Kategori: #categoryName#
                 </div>
                 <div class="news-content">
-                    #content#
+                    <div class="news-content">
+                        #Replace(content, chr(10), "<br>", "all")#
+                    </div>
                 </div>
             </div>
             <button onclick="location.href='updateNews.cfm?newsID=#URL.newsID#'">G&uuml;ncelle / Sil</button>
