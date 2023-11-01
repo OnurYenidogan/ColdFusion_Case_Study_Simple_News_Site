@@ -46,5 +46,13 @@
             </form>
         </cfoutput>
     </div>
+    <cfif IsDefined("form.delete")>
+    <cfquery datasource="NewsSiteDS">
+        DELETE FROM News
+        WHERE newsID = <cfqueryparam value="#form.newsID#" cfsqltype="CF_SQL_INTEGER">
+    </cfquery>
+    <cflocation url="index.cfm" addtoken="no">
+</cfif>
+
 </body>
 </html>
