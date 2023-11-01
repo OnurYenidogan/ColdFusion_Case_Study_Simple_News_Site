@@ -1,9 +1,9 @@
 <!-- jsonPosts.cfm -->
 <html>
 <head>
-        <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <style>
-        .filter-section {
+        .filter-section, .sort-section {
             background-color: #f9f9f9;
             padding: 10px;
             margin-bottom: 10px;
@@ -26,24 +26,18 @@
     <div class="container">
         <cfset fileContent = FileRead(expandPath("./posts.json"))>
         <cfset posts = DeserializeJSON(fileContent)>
-        <!--- İnternetten JSON verisini çekek için
-        <cfhttp url="https://dummyjson.com/posts" method="get" result="response"></cfhttp>
-        <cfset posts = DeserializeJSON(response.FileContent)>
-        --->
 
-        <!--- Benzersiz tag'leri saklamak için bir yapı oluşturun --->
+        <!--- Unique tags structure --->
         <cfset uniqueTags = {}>
-        <!--- Tüm post'ları döngüye alın ve her bir tag'i kontrol edin --->
         <cfloop array="#posts.posts#" index="post">
             <cfloop array="#post.tags#" index="tag">
-                <!--- Eğer tag daha önce görülmemişse, yapıya ekleyin --->
                 <cfif NOT structKeyExists(uniqueTags, tag)>
                     <cfset uniqueTags[tag] = true>
                 </cfif>
             </cfloop>
         </cfloop>
 
-        <!--- Filtreleme formunu oluşturun --->
+        <!--- Filtering form --->
         <div class="filter-section">
             <form action="jsonPosts.cfm" method="post">
                 <div class="filter-tags">
@@ -54,13 +48,35 @@
                         </cfloop>
                     </cfoutput>
                 </div>
+                <div class="sort-section">
+                    <label for="sortField">Sırala:</label>
+                    <select name="sortField" id="sortField">
+                        <option value="id">Post ID</option>
+                        <option value="userId">User ID</option>
+                    </select>
+                    <select name="sortOrder" id="sortOrder">
+                        <option value="asc">Artan</option>
+                        <option value="desc">Azalan</option>
+                    </select>
+                </div>
                 <input type="submit" value="Filtrele" class="filter-button">
             </form>
         </div>
 
-        <!--- Form gönderildiyse, tags dizisini elde edin --->
+        <!--- If form submitted, get tags array --->
         <cfif structKeyExists(FORM, "tags")>
             <cfset selectedTags = ListToArray(FORM.tags)>
+        </cfif>
+        <cfif structKeyExists(FORM, "sortField") AND structKeyExists(FORM, "sortOrder")>
+            <cfset sortField = FORM.sortField>
+            <cfset sortOrder = FORM.sortOrder>
+            <cfset arraySort(posts.posts, function(a, b) {
+                if (sortOrder == "asc") {
+                    return val(a[sortField]) - val(b[sortField]);
+                } else {
+                    return val(b[sortField]) - val(a[sortField]);
+                }
+            })>
         </cfif>
 
         <cfoutput>
@@ -72,10 +88,12 @@
                         </div>
                         <div class="news-content">
                             <p>#post.body#</p>
-                            <ul>
-                                <cfloop array="#post.tags#" index="tag">
-                                    <li>#tag#</li>
-                                </cfloop>
+                            <ul style="display: inline;">
+                                <p>Tags: 
+                                    <cfloop array="#post.tags#" index="tag">
+                                        #tag#<cfif tag NEQ post.tags[arrayLen(post.tags)]>,</cfif>
+                                    </cfloop>
+                                </p>
                             </ul>
                             <p>Reactions: #post.reactions#</p>
                             <p>User ID: #post.userId#</p>
