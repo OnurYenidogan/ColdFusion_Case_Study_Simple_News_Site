@@ -7,15 +7,16 @@
     <cfinclude template="navigation.cfm">
     <div class="container">
         <cfif structKeyExists(form, "submitted")>
-            <cfquery datasource="NewsSiteDS">
-                INSERT INTO News (title, content, categoryID)
-                VALUES (
-                    <cfqueryparam value="#form.title#" cfsqltype="CF_SQL_VARCHAR">,
-                    <cfqueryparam value="#form.content#" cfsqltype="CF_SQL_LONGVARCHAR">,
-                    <cfqueryparam value="#form.categoryID#" cfsqltype="CF_SQL_INTEGER">
-                )
-            </cfquery>
-            
+    <cfquery datasource="NewsSiteDS">
+        INSERT INTO News (title, content, categoryID, createdDate, updatedDate)
+        VALUES (
+            <cfqueryparam value="#form.title#" cfsqltype="CF_SQL_VARCHAR">,
+            <cfqueryparam value="#form.content#" cfsqltype="CF_SQL_LONGVARCHAR">,
+            <cfqueryparam value="#form.categoryID#" cfsqltype="CF_SQL_INTEGER">,
+            <cfqueryparam value="#Now()#" cfsqltype="CF_SQL_TIMESTAMP">,
+            <cfqueryparam value="#Now()#" cfsqltype="CF_SQL_TIMESTAMP">
+        )
+    </cfquery>
         </cfif>
 
         <cfquery name="getCategories" datasource="NewsSiteDS">
@@ -43,17 +44,17 @@
         color: green;
         font-weight: bold;
         margin-bottom: 10px;
-        font-size: 30pt; /* Yazı boyutunu 30 pt olarak ayarlayın */
-        text-align: center; /* Yazıyı tam ortala */
+        font-size: 30pt;
+        text-align: center;
     }
         .input-field, .textarea-field, .submit-btn {
-            width: 80%;  /* Adjust as needed */
+            width: 80%;
             padding: 10px;
-            font-size: 1.2em; /* Adjust as needed */
+            font-size: 1.2em;
             margin-bottom: 10px;
         }
         .textarea-field {
-            height: 150px;  /* Adjust as needed */
+            height: 150px;
         }
         .news-form {
             display: flex;
@@ -61,7 +62,7 @@
             align-items: center;
         }
         .form-label {
-        font-size: 1.5em;  /* Adjust as needed */
+        font-size: 1.5em;
         font-weight: bold;
         margin-bottom: 5px;
     }
@@ -69,9 +70,9 @@
         padding: 10px;
         font-size: 1.2em;
         margin-bottom: 10px;
-        width: auto;  /* Genişliği otomatik olarak ayarla */
-        background-color: #008CBA;  /* Buton rengini mavi yap */
-        color: white;  /* Yazı rengini beyaz yap */
+        width: auto;
+        background-color: #008CBA;
+        color: white;
     }
     </style>
 </body>

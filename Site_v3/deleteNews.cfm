@@ -43,7 +43,6 @@
         }
         .delete-btn {
             background-color: red;
-            /* ... other styles ... */
         }
         .success-message {
             font-size: 2em;

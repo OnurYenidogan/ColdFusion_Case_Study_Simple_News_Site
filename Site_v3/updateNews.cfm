@@ -11,7 +11,8 @@
                 UPDATE News
                 SET title = <cfqueryparam value="#form.title#" cfsqltype="CF_SQL_VARCHAR">,
                     content = <cfqueryparam value="#form.content#" cfsqltype="CF_SQL_LONGVARCHAR">,
-                    categoryID = <cfqueryparam value="#form.categoryID#" cfsqltype="CF_SQL_INTEGER">
+                    categoryID = <cfqueryparam value="#form.categoryID#" cfsqltype="CF_SQL_INTEGER">,
+                    updatedDate = <cfqueryparam value="#Now()#" cfsqltype="CF_SQL_TIMESTAMP">
                 WHERE newsID = <cfqueryparam value="#form.newsID#" cfsqltype="CF_SQL_INTEGER">
             </cfquery>
             <cflocation url="detail.cfm?newsID=#form.newsID#" addtoken="no">

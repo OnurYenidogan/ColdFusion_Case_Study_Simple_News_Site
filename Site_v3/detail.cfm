@@ -7,7 +7,7 @@
      <cfinclude template="navigation.cfm">
     <div class="container">
         <cfquery name="getNewsDetail" datasource="NewsSiteDS">
-            SELECT n.title, n.content, c.categoryName
+            SELECT n.title, n.content, c.categoryName, n.createdDate, n.updatedDate
             FROM News n
             JOIN Categories c ON n.categoryID = c.categoryID
             WHERE n.newsID = <cfqueryparam value="#URL.newsID#" cfsqltype="CF_SQL_INTEGER">
@@ -18,6 +18,10 @@
                 <div class="news-title">
                     #title#
                 </div>
+                <div class="date-info">
+            Olusturulma Tarihi: #DateFormat(createdDate, "dd.mm.yyyy")# #TimeFormat(createdDate, "HH:mm:ss")# | 
+            Son Guncelleme: #DateFormat(updatedDate, "dd.mm.yyyy")# #TimeFormat(updatedDate, "HH:mm:ss")#
+        </div>
                 <div class="news-category">
                     Kategori: #categoryName#
                 </div>
@@ -73,6 +77,11 @@
         border: none;
         border-radius: 5px;
         cursor: pointer;
+    }
+    .date-info {
+        font-size: 14px;
+        text-align: right;
+        margin-bottom: 10px;
     }
 </style>
 
