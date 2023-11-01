@@ -4,21 +4,7 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <div class="navigation">
-        <div class="top-nav">
-            <button onclick="location.href='addCategory.cfm'">Kategori Ekle</button>
-            <button onclick="location.href='index.cfm'">Anasayfa</button>
-            <button onclick="location.href='addNews.cfm'">Haber Ekle</button>
-        </div>
-        <div class="bottom-nav">
-            <cfquery name="getCategories" datasource="NewsSiteDS">
-                SELECT categoryName FROM Categories
-            </cfquery>
-            <cfoutput query="getCategories">
-                <button onclick="location.href='categoryNews.cfm?category=#categoryName#'">#categoryName#</button>
-            </cfoutput>
-        </div>
-    </div>
+    <cfinclude template="navigation.cfm">
     <div class="container">
         <cfif structKeyExists(form, "submitted")>
             <cfquery datasource="NewsSiteDS">
@@ -38,9 +24,9 @@
 
         <form action="addNews.cfm" method="post" class="news-form">
             <input type="hidden" name="submitted" value="true">
-            <div class="form-label">Başlık:</div> <input type="text" name="title" required class="input-field"><br>
-            <div class="form-label">İçerik:</div> <textarea name="content" required class="textarea-field"></textarea><br>
-            <div class="form-label">Kategori:</div> <select name="categoryID" required class="input-field">
+            <div class="form-label">Başlık</div> <input type="text" name="title" required class="input-field"><br>
+            <div class="form-label">İçerik</div> <textarea name="content" required class="textarea-field"></textarea><br>
+            <div class="form-label">Kategori</div> <select name="categoryID" required class="input-field">
                 <cfoutput query="getCategories">
                     <option value="#categoryID#">#categoryName#</option>
                 </cfoutput>

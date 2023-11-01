@@ -14,6 +14,7 @@
     </script>
 </head>
 <body>
+<cfinclude template="navigation.cfm">
     <div class="container">
         <cfquery datasource="NewsSiteDS">
             DELETE FROM News WHERE newsID = <cfqueryparam value="#URL.newsID#" cfsqltype="CF_SQL_INTEGER">
