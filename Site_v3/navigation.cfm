@@ -1,5 +1,5 @@
 ﻿<div class="header">
-    <h1>Onur Yenido&#287;an ColdFusion Study Case</h1>
+    <h1>Onur Yenidoğan ColdFusion Study Case</h1>
 </div>
 
 <div class="navigation">

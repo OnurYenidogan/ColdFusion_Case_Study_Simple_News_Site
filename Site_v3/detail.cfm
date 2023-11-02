@@ -19,8 +19,8 @@
                     #title#
                 </div>
                 <div class="date-info">
-            Olusturulma Tarihi: #DateFormat(createdDate, "dd.mm.yyyy")# #TimeFormat(createdDate, "HH:mm:ss")# | 
-            Son Guncelleme: #DateFormat(updatedDate, "dd.mm.yyyy")# #TimeFormat(updatedDate, "HH:mm:ss")#
+            Oluşturulma Tarihi: #DateFormat(createdDate, "dd.mm.yyyy")# #TimeFormat(createdDate, "HH:mm:ss")# | 
+            Son Güncelleme: #DateFormat(updatedDate, "dd.mm.yyyy")# #TimeFormat(updatedDate, "HH:mm:ss")#
         </div>
                 <div class="news-category">
                     Kategori: #categoryName#
@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </div>
-            <button onclick="location.href='updateNews.cfm?newsID=#URL.newsID#'">G&uuml;ncelle / Sil</button>
+            <button onclick="location.href='updateNews.cfm?newsID=#URL.newsID#'">Güncelle / Sil</button>
         </cfoutput>
     </div>
     <cfif IsDefined("form.delete")>
