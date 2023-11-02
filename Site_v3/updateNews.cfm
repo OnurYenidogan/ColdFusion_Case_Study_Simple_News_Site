@@ -1,4 +1,4 @@
-<!-- updateNews.cfm -->
+﻿<!-- updateNews.cfm -->
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="styles.css">

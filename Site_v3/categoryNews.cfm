@@ -1,4 +1,4 @@
-<!-- categoryNews.cfm -->
+﻿<!-- categoryNews.cfm -->
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="styles.css">
