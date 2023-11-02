@@ -36,8 +36,15 @@
 <body>
 <cfinclude template="navigation.cfm">
     <div class="container">
+    
+            <!--- İnternetten JSON verisini çekmek için--->
+        <cfhttp url="https://dummyjson.com/posts" method="get" result="response"></cfhttp>
+        <cfset posts = DeserializeJSON(response.FileContent)>
+
+        <!--- Yerel JSON verisini çekmek için
         <cfset fileContent = FileRead(expandPath("./posts.json"))>
         <cfset posts = DeserializeJSON(fileContent)>
+        --->
 
         <!--- Unique tags structure --->
         <cfset uniqueTags = {}>
