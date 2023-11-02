@@ -6,7 +6,7 @@
 <body>
 <cfinclude template="navigation.cfm">
 <div class="container">
-    <h2 style="text-align:center;">Kategori Ekle / Sil</h2>
+    <h2 style="text-align:center;">Kategori Ekle</h2>
     
     <!-- Kategori Ekle -->
     <cfif structKeyExists(form, "submitted")>
@@ -28,6 +28,7 @@
     <hr style="width: 80%; margin: 20px 10%;">
 
     <!-- Kategori Sil -->
+    <h2 style="text-align:center;">Kategori Sil</h2>
     <cfparam name="form.categoryID" default="0">
     <cfif structKeyExists(form, "deleteSubmitted")>
         <cfquery name="checkNews" datasource="NewsSiteDS">
@@ -38,7 +39,7 @@
 
         <cfif checkNews.NewsCount GT 0>
             <div class="error-message">
-                Kategoride haber olduğu için silme işlemi yapılmadı, haber(leri) güncelleyin veya silin.
+                Kategoride haber olduğu için silme işlemi yapılmadı, haber kategorilerini güncelleyin veya haberleri silin.
             </div>
         <cfelse>
             <cfquery datasource="NewsSiteDS">
