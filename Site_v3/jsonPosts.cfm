@@ -18,16 +18,16 @@
         .filter-button {
             display: block;
             margin: 10px auto 0 auto;
-            background-color: #28a745;  /* Yeşil arka plan rengi */
-            color: #ffffff;  /* Beyaz yazı rengi */
-            padding: 10px 20px;  /* Daha büyük padding */
-            font-size: 16px;  /* Daha büyük font boyutu */
-            border: none;  /* Kenarlık kaldırıldı */
-            cursor: pointer;  /* İmleç, düğme üzerine gelindiğinde el simgesi olur */
-            border-radius: 5px;  /* Köşeleri yuvarlak yapar */
+            background-color: #28a745;
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
         }
         .sort-section select {
-            font-size: 16px; /* veya istediğiniz başka bir değer */
+            font-size: 16px;
         }
 
 
