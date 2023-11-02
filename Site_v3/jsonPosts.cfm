@@ -62,14 +62,13 @@
                     </cfoutput>
                 </div>
                 <div class="sort-section">
-                    <label for="sortField">S&inodot;rala:</label>
-                    <select name="sortField" id="sortField">
-                        <option value="id">Post ID</option>
-                        <option value="userId">User ID</option>
-                    </select>
+                    <label>Sırala:</label>
+                    <input type="radio" name="sortField" value="id" <cfif NOT structKeyExists(FORM, "sortField") OR FORM.sortField eq "id">checked</cfif>> Post ID
+                    <input type="radio" name="sortField" value="userId" <cfif structKeyExists(FORM, "sortField") AND FORM.sortField eq "userId">checked</cfif>> User ID
+                    <input type="radio" name="sortField" value="reactions" <cfif structKeyExists(FORM, "sortField") AND FORM.sortField eq "reactions">checked</cfif>> Reactions
                     <select name="sortOrder" id="sortOrder">
-                        <option value="asc">Artan</option>
-                        <option value="desc">Azalan</option>
+                        <option value="asc" <cfif NOT structKeyExists(FORM, "sortOrder") OR FORM.sortOrder eq "asc">selected</cfif>>Artan Sıra</option>
+                        <option value="desc" <cfif structKeyExists(FORM, "sortOrder") AND FORM.sortOrder eq "desc">selected</cfif>>Azalan Sıra</option>
                     </select>
                 </div>
                 <input type="submit" value="Filtrele / Sırala" class="filter-button">
