@@ -18,6 +18,29 @@ This project is a simple news website developed using ColdFusion for a job appli
 
 ## Overview
 
+**Project Description:**
+This repository presents a case study developed during a job application process. It showcases the development of a simple news website using ColdFusion technology, demonstrating practical application in web development.
+
+**Key Features:**
+
+- **News Management:** The site allows users to view news by categories, access detailed news content, and update news articles.
+- **Dynamic Content Creation:** Implements fundamental principles of dynamic page generation with ColdFusion.
+- **JSON Data Handling:** Integrates and visualizes data from an external JSON source.
+- **Database Integration:** Utilizes MSSQL for managing news content and categories.
+
+**Technologies:**
+
+- ColdFusion
+- MSSQL
+- HTML/CSS
+- JavaScript (for handling JSON data)
+
+**Purpose of the Project:**
+This project was designed to illustrate practical web development techniques and the effective use of ColdFusion in a real-world scenario. It provides insights into developing a functional website and demonstrates basic integration of ColdFusion with a database.
+
+This repository is part of my job application process, showcasing my technical skills and performance. The project was conducted for a specific company, whose name is withheld for confidentiality reasons.
+
+
 ## Category-Specific News Display
 ![image](https://github.com/OnurYenidogan/ColdFusion_Case_Study_Simple_News_Site/assets/58027395/96401dbd-c9a8-4355-b50e-4972348d6da8)
 
